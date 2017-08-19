@@ -1,0 +1,22 @@
+{
+  "name": "hyper-clock",
+  "version": "0.0.1",
+  "description": "try hyperapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisAu4000/hyper-clock.git"
+  },
+  "keywords": [
+    "hyperapp"
+  ],
+  "author": "Chrisitan Auer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisAu4000/hyper-clock/issues"
+  },
+  "homepage": "https://github.com/chrisAu4000/hyper-clock#readme"
+}
