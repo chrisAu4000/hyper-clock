@@ -4,7 +4,7 @@
   "description": "try hyperapp",
   "main": "index.js",
   "scripts": {
-    "dev": "budo src/index.js:bundle.js --base --live --open --title Hyper -- -t babelify src/index.js",
+    "dev": "budo src/index.js:bundle.js --base --live --open --title Hyper --css public/index.css -- -t babelify src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

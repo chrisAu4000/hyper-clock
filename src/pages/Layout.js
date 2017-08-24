@@ -3,9 +3,9 @@ import { h } from 'hyperapp'
 
 const Layout = curry((page, state, actions) => {
 	return (
-		<div className="">
-			<header>
-				<nav>
+		<div class="app">
+			<header class="header">
+				<nav class="nav">
 					{state.router.goto}
 					<ul>
 						<li>
@@ -20,11 +20,11 @@ const Layout = curry((page, state, actions) => {
 					</ul>
 				</nav>
 			</header>
-			<aside></aside>
-			<main>
+			<aside class="aside"></aside>
+			<main class="main">
 				{page(state, actions)}
 			</main>
-			<footer></footer>
+			<footer class="footer"></footer>
 		</div>
 	)
 })
