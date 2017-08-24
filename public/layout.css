@@ -1,0 +1,37 @@
+.app {
+	display: grid;
+	grid-template-rows: 150px calc(100vh - 230px) 80px;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	grid-template-areas: 
+		'header header header' 
+		'aside main main'
+		'footer footer footer';
+}
+
+.header {
+	display: grid;
+	grid-area: header;
+}
+
+.aside {
+	grid-area: aside;
+}
+
+.main {
+	grid-area: main;
+}
+
+.footer {
+	grid-area: footer;
+}
+
+@media screen and (max-width: 500px) {
+	.app {
+		grid-template-areas: 
+			'header header header' 
+			'main main main' 
+			'aside aside asside' 
+			'footer footer footer';
+	}
+}
