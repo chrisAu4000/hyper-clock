@@ -1,32 +1,18 @@
 import { curry } from 'crocks'
 import { h } from 'hyperapp'
+import Navigation from '../app/Navigation'
 
-const Layout = curry((page, state, actions) => {
+const Layout = (navigation) => {
 	return (
 		<div class="app">
 			<header class="header">
-				<nav class="nav">
-					{state.router.goto}
-					<ul>
-						<li>
-							<a href="#">home</a>
-						</li>
-						<li>
-							<a href="#/login">login</a>
-						</li>	
-						<li>
-							<a href="#/counter">clock</a>
-						</li>
-					</ul>
-				</nav>
+				{ navigation }
 			</header>
 			<aside class="aside"></aside>
-			<main class="main">
-				{page(state, actions)}
-			</main>
+			<main class="main"></main>
 			<footer class="footer"></footer>
 		</div>
 	)
-})
+}
 
 export default Layout

@@ -1,0 +1,84 @@
+* {
+	color: $font-color__primary;
+}
+
+
+h1 {
+	font-size: 3em;
+	line-height: 1.05em;
+	@media #{$media-tablet} {
+		line-height: 1.125em;
+		font-size: 2.5em
+	}
+	@media #{$media-mobile} {
+		line-height: 1.25em;
+		font-size: 2em;
+	}
+}
+
+.h1__xxl {
+	font-size: 8em;
+	font-family: 'Sedgwick Ave Display', cursive;
+	text-align: center;
+	@media #{$media-tablet} {
+		font-size: 7em
+	}
+	@media #{$media-mobile} {
+		font-size: 5em;
+	}
+}
+
+h2 {
+	font-size: 2.25em;
+	line-height: 1.25em;
+	@media #{$media-tablet} {
+		font-size: 2em
+	}
+	@media #{$media-mobile} {
+		line-height: 1.154em;
+		font-size: 1.625em;
+	}
+}
+
+h3 {
+	font-size: 1.75em;
+	@media #{$media-tablet} {
+		line-height: 1.25em;
+		font-size: 1.5em
+	}
+	@media #{$media-mobile} {
+		line-height: 1.136em;
+		font-size: 1.375em;
+	}
+}
+
+h4 {
+	font-size: 1.125em;
+	line-height: 1.22em;
+	@media #{$media-mobile} {
+		line-height: 1.11em;
+	}
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+blockquote {
+	font-size: 1.25em;
+	line-height: 1.25;
+	@media #{$media-tablet} {
+		line-height: 1.5em;
+		font-size: 1.5em
+	}
+
+	@media #{$media-mobile} {
+		line-height: 1.25em;
+		font-size: 1.25em;
+	}
+}
+
+button, p, a {
+	font-family: 'Roboto', sans-serif;
+}

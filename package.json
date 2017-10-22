@@ -4,7 +4,11 @@
   "description": "try hyperapp",
   "main": "index.js",
   "scripts": {
-    "dev": "budo src/index.js:bundle.js --base --live --open --title Hyper --css public/index.css -- -t babelify src/index.js",
+    "dev": "budo src/index.js:bundle.js -l -o --title Hyper -- -t babelify src/index.js",
+    "clean": "rimraf public",
+    "build:css": "node-sass src/style/main.scss --outFile main.css --source-maptrue --output public",
+    "watch:css": "chokidar 'src/style/*.scss' -c 'npm run build:css'",
+    "start": "npm-run-all clean build:css --parallel watch:css dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,11 +31,18 @@
     "browserify": "^14.4.0",
     "budo": "^10.0.4",
     "bundle-collapser": "^1.3.0",
+    "chokidar-cli": "^1.2.0",
+    "eslint": "^4.5.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.4.0",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.2",
     "uglifyify": "^4.0.3",
     "uglifyjs": "^2.4.11"
   },
   "dependencies": {
-    "@hyperapp/router": "^0.1.0",
+    "@hyperapp/router": "^0.3.0",
     "crocks": "^0.7.0",
     "hyperapp": "^0.12.0"
   }

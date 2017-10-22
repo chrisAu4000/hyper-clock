@@ -1,0 +1,31 @@
+.task {
+	margin: 15px;
+	padding: 15px;
+	border: 1px solid white;
+	padding-left: 20px;
+	&-name {
+		font-size: 25px;
+		font-weight: bold;
+	}
+	&-duration {
+		font-size: 18px;
+	}
+	&-pause {
+		font-size: 18px;
+	}
+}
+
+.task-list {
+	list-style: none;
+	margin-top: 33px;
+	padding:  0 20px;
+	margin-bottom: -33px;
+	margin-right: -20px;
+	.task:first-of-type {
+		margin-top: 0;
+	}
+	.task:last-of-type {
+		margin-bottom: 0;
+	}
+}
+

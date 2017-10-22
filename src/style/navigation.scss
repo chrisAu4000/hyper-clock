@@ -1,0 +1,15 @@
+.navbar {
+	// height: 120px;
+	border: 1px solid white;
+	.navbar-list {
+		display: flex;
+		list-style: none;
+	}
+	.navbar-item {
+		padding: 10px 20px;
+		border: 1px solid white;
+	}
+	.navbar-link {
+		text-decoration: none;
+	}
+}

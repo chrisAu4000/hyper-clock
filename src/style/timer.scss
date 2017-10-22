@@ -1,0 +1,30 @@
+.timer {
+	margin: 10px;
+	&__circular {
+		transform: rotate(-90deg);
+		width: 80%;
+		margin: 20px auto;
+	}
+	&-circle {
+		fill: none;
+		stroke-width: 12;
+		transition: stroke-dasharray .1s ease;
+	}
+	&-value{
+		text-align: center;
+	}
+}
+
+
+.timer-background {
+	stroke: transparent;
+}
+
+.timer-foreground {
+	stroke: $color-green;
+}
+
+.timer-buttons {
+	margin-top: 20px;
+	display: flex;
+}

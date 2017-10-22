@@ -1,34 +1,79 @@
 import { h } from 'hyperapp'
+const vbWidth = 120
+const strokeWidth = 12
+const visibleCirclePercentage = 100
+const percentage = 10
 
-const circleFerence = r => r * 2 * 3.14
 const normalize = (countMax, count) => count / countMax
-const toCircle = (max, curr, mul) => (normalize(max, curr) * mul)
 
-const Timer = (state, actions) => (
-	<div class="timer">
-		<h1 class="headline_xxl">Timer</h1>
-		<svg class="timer-clock">
-			<circle style={
-				{
-					'stroke-dasharray': toCircle(state.countMax, state.count, circleFerence(90)) + ' ' + (circleFerence(90))
-				}
-			} />
-			<p class="timer-clock-time">{state.formated}</p>
-		</svg>
-		<p>{ state.formated }</p>
-		{ state.count === 0 || state.started === false
-			? <button class="button button--primary button--success" onclick={actions.timer.start}>Start</button>
-			: <button class="button button--primary button--success button--success_disabled" onclick={actions.timer.start}>Start</button> 
-		}
-		{ state.started
-			? <button class="button button--primary button--success" onclick={actions.timer.stop}>Stop</button>
-			: <button class="button button--primary button--success button--success_disabled" onclick={actions.timer.stop}>Stop</button>
-		}
-		{ state.count === state.countMax
-			? <button class="button button--primary" onclick={actions.timer.reset}>Reset</button>
-			: <button class="button button--primary button_disabled" onclick={actions.timer.reset}>Reset</button>
-		}
-	</div>
+const stopButton = (state, { pause }) => (
+	buttonWrapper([
+		{ label: 'Stop', className: 'button button--primary button--success', clickHandler: pause },
+	])
 )
 
-export default Timer
+const CircularTimer = ({strokeWidth, offset, percent}) => {
+	const width = 120
+	const radius = (width - strokeWidth) / 2
+	const circumference = radius * 2 * Math.PI
+	const backgroundOffset = circumference - circumference * offset / 100
+	const foregroundOffset = circumference - circumference * (percent / 100 * offset) / 100
+	const styleBackground = {
+		cx: width / 2,
+		cy: width / 2,
+		r: radius,
+		'stroke-dasharray': circumference,
+		'stroke-dashoffset': backgroundOffset
+	}
+	const styleForeground = {
+		cx: width / 2,
+		cy: width / 2,
+		r: radius,
+		'stroke-dasharray': circumference,
+		'stroke-dashoffset': foregroundOffset
+	}
+	return (
+		<div class="timer__circular">
+			<svg class="timer-svg" viewBox={`0 0 ${width} ${width}`} style={{ transform: `rotate(-210)` }}>
+				<circle class="timer-circle timer-background" style={styleBackground}/>
+				<circle class="timer-circle timer-foreground" style={styleForeground} />
+			</svg>
+		</div>
+	)
+}
+
+const startAndResetButtons = (state, { start, stop, resume }) => {
+	if (state.milliseconds === 0) {
+		return buttonWrapper([
+			{ label: 'Start', className: 'button button--primary button--success', clickHandler: start.bind(null, { duration: 10000 }) }
+		])
+	} else if (state.milliseconds === state.duration) {
+		return buttonWrapper([
+			{ label: 'Reset', className: 'button button--primary', clickHandler: stop }
+		])
+	} else {
+		return buttonWrapper([
+			{ label: 'Start', className: 'button button--primary button--success', clickHandler: resume },
+			{ label: 'Reset', className: 'button button--primary', clickHandler: stop }
+		])
+	}
+}
+
+const TimerButton = ({ label, onclick }) => (
+	<button class="timer-button" onclick={onclick}>{label}</button>
+)
+
+const view = ({started, duration, milliseconds}) => {
+	console.log(started)
+	return (
+		<div class="timer">
+			<CircularTimer
+				strokeWidth={12}
+				offset={100}
+				percent={normalize(duration, milliseconds) * 100} />
+		</div>
+	)
+}
+
+const test = (state) => <h1>{state.milliseconds}</h1>
+module.exports = CircularTimer

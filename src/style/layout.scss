@@ -1,0 +1,77 @@
+‚.app {
+	display: grid;
+	grid-template-rows: 80px calc(100vh - 230px) 80px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: 
+		'header header header' 
+		'aside main main'
+		'footer footer footer';
+}
+
+.header {
+	display: grid;
+	grid-area: header;
+}
+
+.aside {
+	grid-area: aside;
+}
+
+.main {
+	margin-top: 20px;
+	grid-area: main;
+}
+
+.footer {
+	grid-area: footer;
+}
+
+@media screen and (max-width: 500px) {
+	
+}
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen and (min-width: $device-width-mobile-min) and (max-width: $device-width-mobile-max) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	.app {
+		grid-template-areas: 
+			'header header header' 
+			'main main main' 
+			'aside aside asside' 
+			'footer footer footer';
+	}
+}
+
+
+/* Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+
+}
+
+/* ----------- iPad 1 and 2 ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/* Portrait */
+@media only screen and (min-width: $device-width-tablet-min) and (max-width: $device-width-tablet-max) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+	.app {
+		grid-template-columns: 1fr 2fr 2fr;
+		grid-template-areas: 	
+			'header header header' 
+			'aside main main' 
+			'footer footer footer';
+		
+	}
+}
+
+/* Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+
+}
