@@ -53,7 +53,8 @@ h1 {
 .h1__xxl {
   font-size: 8em;
   font-family: 'Sedgwick Ave Display', cursive;
-  text-align: center; }
+  text-align: center;
+  margin-top: 10px; }
   @media only screen and (min-width: 668px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
     .h1__xxl {
       font-size: 7em; } }
@@ -112,6 +113,7 @@ button, p, a {
 .button-group {
   position: relative; }
   .button-group__centered {
+    padding: 10px;
     margin: 0 auto;
     text-align: center; }
 
@@ -141,7 +143,7 @@ button, p, a {
 
 .button-fixed {
   position: fixed;
-  transition: top 0.5s, left 0.5s cubic-bezier(0.55, 0.09, 0.68, 0.53), transform 0.3s;
+  transition: top 0.3s, left 0.3s cubic-bezier(0.77, -0.21, 0.79, 1.27), transform 0.3s;
   margin: 10px; }
   .button-fixed:active {
     transform: scale(1.3); }
@@ -170,6 +172,7 @@ button, p, a {
 
 .range-input-label,
 .text-input-label {
+  font-family: sans-serif;
   text-align: center;
   position: absolute;
   top: 20px;
@@ -185,6 +188,12 @@ button, p, a {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none; }
+  .range-input-label__active,
+  .text-input-label__active {
+    font-family: sans-serif;
+    top: 0px;
+    font-size: 12px;
+    opacity: 1; }
 
 .text-input-label:after {
   content: '';
@@ -247,9 +256,13 @@ button, p, a {
   width: 0%;
   transition: 0.2s ease all;
   outline: none; }
-
-.range-input__visible {
-  width: 100%; }
+  .range-input__visible {
+    width: 100%; }
+  .range-input__vertical {
+    transform: rotate(270deg);
+    margin-top: 95%;
+    margin-bottom: 85%;
+    margin: 95% auto 85%; }
 
 .range-input__visible ~ .range-input-label {
   top: 0;
@@ -358,18 +371,19 @@ button, p, a {
   .navbar .navbar-link {
     text-decoration: none; }
 
-.timer {
-  margin: 10px; }
-  .timer__circular {
-    transform: rotate(-90deg);
-    width: 80%;
-    margin: 20px auto; }
-  .timer-circle {
-    fill: none;
-    stroke-width: 12;
-    transition: stroke-dasharray .1s ease; }
-  .timer-value {
-    text-align: center; }
+.timer__circular {
+  transform: rotate(-90deg);
+  width: 80%;
+  margin: 20px auto; }
+
+.timer-circle {
+  fill: none;
+  stroke-width: 12;
+  transition: stroke-dasharray .1s ease; }
+
+.timer-value {
+  margin-top: 20px;
+  text-align: center; }
 
 .timer-background {
   stroke: transparent; }
@@ -382,10 +396,10 @@ button, p, a {
   display: flex; }
 
 .task {
-  margin: 15px;
   padding: 15px;
-  border: 1px solid white;
-  padding-left: 20px; }
+  border-bottom: 1px solid white;
+  padding-left: 20px;
+  cursor: pointer; }
   .task-name {
     font-size: 25px;
     font-weight: bold; }
@@ -397,13 +411,24 @@ button, p, a {
 .task-list {
   list-style: none;
   margin-top: 33px;
-  padding: 0 20px;
+  padding: 0 10px 10px 10px;
   margin-bottom: -33px;
   margin-right: -20px; }
   .task-list .task:first-of-type {
     margin-top: 0; }
   .task-list .task:last-of-type {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    border-bottom: none; }
+
+.task-layer-ranges {
+  display: flex; }
+  .task-layer-ranges__vertical {
+    flex-direction: row; }
+  .task-layer-ranges__horizontal {
+    flex-direction: column; }
+
+.task-times .timer-value {
+  margin-top: 0; }
 
 * {
   box-sizing: border-box;
@@ -424,8 +449,7 @@ body {
       margin-top: 145px; }
   .page__blocked {
     overflow: hidden;
-    width: 100%;
-    height: 100vh; }
+    width: 100%; }
   .page .blur {
     position: absolute;
     filter: blur(3px);
@@ -439,16 +463,34 @@ body {
     transition: opacity 1s; }
 
 .task-edit {
+  display: flex;
   z-index: 0;
-  background: #4a6dbb;
+  background: rgba(33, 41, 44, 0);
   width: 0px;
   height: 0px;
   overflow: hidden;
-  display: flex;
   flex-direction: column;
-  margin: 0px 35px 0;
-  transition: width 0.5s cubic-bezier(1, -0.01, 0.93, 0.64), height 0.5s cubic-bezier(1, -0.01, 0.93, 0.64), margin 0.5s, padding 0.5s; }
+  margin: 0px 35px 0 35px;
+  padding: 30px;
+  border: 4px solid;
+  border-radius: 5px;
+  border-color: rgba(103, 191, 130, 0);
+  transition: width 0.3s cubic-bezier(1, -0.01, 0.52, 1.29), height 0.3s cubic-bezier(1, -0.01, 0.52, 1.29), background 0.3s cubic-bezier(1, -0.01, 0.52, 1.29), border-color 0.3s cubic-bezier(1, -0.01, 0.52, 1.29); }
   .task-edit.visible {
-    width: 82%;
+    background: #21292c;
+    border-color: #67bf82;
+    width: calc(100% - 70px);
     height: 55vh;
-    padding: 30px; }
+    z-index: 0; }
+
+.task-times {
+  display: flex; }
+  .task-times .time-label {
+    margin: 0 auto 0 0; }
+
+.range-group {
+  position: relative;
+  margin-top: 15px; }
+
+.time-label {
+  font-family: Arial, sans-serif; }

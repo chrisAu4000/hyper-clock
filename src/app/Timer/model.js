@@ -1,5 +1,3 @@
-const { Nothing } = require('crocks/Maybe')
-
 const model = {
 	started: false,
 	reversed: false,
@@ -8,4 +6,3 @@ const model = {
 }
 
 module.exports = model
-

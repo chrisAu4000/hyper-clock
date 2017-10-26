@@ -42,7 +42,7 @@ body {
 	&__blocked {
 		overflow: hidden;
 		width: 100%;
-		height: 100vh;
+		// height: 100vh;
 	}
 
 	.blur {
@@ -61,18 +61,45 @@ body {
 }
 
 .task-edit {
+	display: flex;
 	z-index: 0;
-	background: $color-blue;
+	background: rgba($color-black, 0);
 	width: 0px;
 	height: 0px;
 	overflow: hidden;
-	display: flex;
 	flex-direction: column;
-	margin: 0px 35px 0;
-	transition: width 0.5s cubic-bezier(1, -0.01, 0.93, 0.64), height 0.5s cubic-bezier(1, -0.01, 0.93, 0.64), margin .5s, padding .5s;
+	margin: 0px 35px 0 35px;
+	padding: 30px;
+	border: 4px solid;
+	border-radius: 5px;
+	border-color: rgba($color-green, 0);
+	transition: width 0.3s cubic-bezier(1, -0.01, 0.52, 1.29),
+							height 0.3s cubic-bezier(1, -0.01, 0.52, 1.29),
+							background 0.3s cubic-bezier(1, -0.01, 0.52, 1.29),
+							border-color 0.3s cubic-bezier(1, -0.01, 0.52, 1.29);
 	&.visible {
-		width: 82%;
+		background: rgba($color-black, 1);
+		border-color: rgba($color-green, 1);
+		width: calc(100% - 70px);
 		height: 55vh;
-		padding: 30px;
+		z-index: 0;
+	}
+}
+
+.task-times {
+	display: flex;
+	.time-label {
+		margin: 0 auto 0 0;
+	}
+}
+
+.range-group {
+	position: relative;
+	margin-top: 15px;
+}
+
+.time {
+	&-label {
+		font-family: Arial, sans-serif;
 	}
 }

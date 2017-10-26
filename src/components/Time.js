@@ -14,7 +14,7 @@ const secondsToTimeStr = curry((format, msec) =>
 		.ap(Identity(getSeconds(msec)))
 		.ap(Identity(getMilliseconds(msec)))
 )
-		
+
 const Time = ({ format, msec }) => <p class="timer-value">{secondsToTimeStr(format, msec).value() }</p>
 
 export default Time

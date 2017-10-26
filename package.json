@@ -44,6 +44,7 @@
   "dependencies": {
     "@hyperapp/router": "^0.3.0",
     "crocks": "^0.7.0",
+    "daggy": "^1.2.0",
     "hyperapp": "^0.12.0"
   }
 }

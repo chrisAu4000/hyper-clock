@@ -14,10 +14,10 @@ const timeFormat = curry(
 	(h, m, s, ms) => `${h}:${m}:${padL02(s)}:${padL03(ms)}`
 )
 
-const TimerPage = (state, actions) => (
+const TimerPage = (state, { router, timer }) => (
 	<div class="page">
 		<div class="content">
-			<Navigation onclick={actions.router.go} />
+			<Navigation onclick={router.go} />
 			<div class="timer">
 				<h1 class="h1 h1__xxl">Timer</h1>
 				<Timer
@@ -31,13 +31,21 @@ const TimerPage = (state, actions) => (
 						{
 							state.milliseconds < state.duration
 								? state.started === false
-									? <button class="button success" onclick={actions.timer.start.bind(null, { duration: 10000 })}>Start</button>
-									: <button class="button warning" onclick={actions.timer.pause}>Stop</button>
+									? <button
+										class="button success"
+										onclick={timer.start.bind(null, { duration: 10000 })}>
+											Start
+									</button>
+									: <button
+										class="button warning"
+										onclick={timer.pause}>
+											Stop
+									</button>
 								: ''
 						}
 						{
 							state.started === false && state.milliseconds !== 0
-							&& <button class="button" onclick={actions.timer.stop}>Reset</button>
+							&& <button class="button" onclick={timer.stop}>Reset</button>
 						}
 					</div>
 				</div>
@@ -47,3 +55,4 @@ const TimerPage = (state, actions) => (
 )
 
 export default TimerPage
+export { timeFormat }

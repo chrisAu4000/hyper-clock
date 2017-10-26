@@ -1,6 +1,7 @@
 .button-group {
 	position: relative;
 	&__centered {
+		padding: 10px;
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -36,7 +37,7 @@
 
 .button-fixed {
 	position: fixed;
-	transition: top 0.5s, left 0.5s cubic-bezier(0.55, 0.09, 0.68, 0.53), transform 0.3s;
+	transition: top 0.3s, left 0.3s cubic-bezier(0.77, -0.21, 0.79, 1.27), transform 0.3s;
 	margin: 10px;
 	&:active {
 		transform: scale(1.3);
